@@ -1,6 +1,6 @@
 ## About Athena & grSim
 * [grSim](https://github.com/RoboCup-SSL/grSim) is a simulation software. It will send information(robot position and orientation) via [UDP](https://baike.baidu.com/item/UDP/571511?fr=aladdin) like a real [vision machine](https://github.com/RoboCup-SSL/ssl-vision) which will be used in real robot situation.
-* Athena is a visualization software, receiving data from grSim or vision machine, sending information(robot position & orientation & velocity & angular velocity) using port 23333.
+* Athena is a visualization software, receiving data from grSim or vision machine, sending information(robot position & orientation & velocity & angular velocity) via UDP.
 
 
 | Item          | Multicast Address | Port                             |
@@ -12,9 +12,11 @@
 
 #### Post setting
 **grSim:**
+
 ![grSim](./img/grSim.png)
 
 **Athena:(Press 'R' to reload)**
+
 ![Athena](./img/Athena.png)
 
 ## Python
