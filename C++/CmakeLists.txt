@@ -1,0 +1,43 @@
+cmake_minimum_required (VERSION 3.0)
+
+set(CMAKE_CXX_FLAGS_RELEASE "/MD")
+
+set(PROJ_NAME "test")
+project (${PROJ_NAME})
+
+set(ThirdParty "${CMAKE_CURRENT_LIST_DIR}/3rdParty")
+
+# Qt5
+set(QT_BIN "${ThirdParty}/Qt5/bin")
+set(QT_INCLUDE "${ThirdParty}/Qt5/include"
+			   "${ThirdParty}/Qt5/include/QtNetwork"
+			   "${ThirdParty}/Qt5/include/QtCore"
+	)
+set(QT_LIB "${ThirdParty}/Qt5/lib")
+
+# protobuf
+set(PROTOBUF_BIN "${ThirdParty}/protobuf/bin")
+set(PROTOBUF_INCLUDE "${ThirdParty}/protobuf/include")
+set(PROTOBUF_LIB "${ThirdParty}/protobuf/lib")
+
+set(INCLUDE_DIRS ${CMAKE_CURRENT_LIST_DIR}/include
+				 ${CMAKE_CURRENT_LIST_DIR}/src/proto/cpp
+				 ${QT_INCLUDE}
+				 ${PROTOBUF_INCLUDE}
+	)
+
+file(GLOB SOURCE "${CMAKE_CURRENT_LIST_DIR}/src/*.*"
+				 "${CMAKE_CURRENT_LIST_DIR}/src/proto/cpp/*.*")
+
+file(GLOB LINK_DIRS ${QT_LIB}/x64/Qt5Network.lib
+					${QT_LIB}/x64/Qt5Core.lib
+					${PROTOBUF_LIB}/x64/libprotobuf.lib
+	)
+
+include_directories(${INCLUDE_DIRS})
+
+add_executable(${PROJ_NAME} ${SOURCE})
+
+target_link_libraries(${PROJ_NAME} ${LINK_DIRS})
+
+install(TARGETS ${PROJ_NAME} RUNTIME DESTINATION ${CMAKE_CURRENT_LIST_DIR}/bin)
