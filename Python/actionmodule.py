@@ -83,7 +83,7 @@ class ActionModule:
         
 if __name__ == "__main__":
     action = ActionModule(ACTION_IP, ACTION_PORT)
-    action.reset(robot_num=6)
+    action.reset(robot_num=1)
     while(True):
         action.send_action(robot_num=6, vx=3, vy=0, w=0)
         sleep(0.015)

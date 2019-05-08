@@ -14,7 +14,7 @@ LOG = False
 VISION_PORT = 23333
 ACTION_IP = '127.0.0.1'
 ACTION_PORT = 20011
-ROBOT_ID = 6
+ROBOT_ID = 1
 
 max_v = 3.0
 max_w = 2*np.pi
@@ -66,7 +66,7 @@ def target_policy(state):
 
 def run_loop(vision, sender):
     action = [0, 0, 0]
-    sender.reset(robot_num=6)
+    sender.reset(ROBOT_ID)
     
     i = 0
     while i < 1e7:
